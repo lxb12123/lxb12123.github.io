@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xibin Li - AI Engineer</title>
+  <meta name="description" content="Xibin Li, AI Engineer based in China. Focused on artificial intelligence, machine learning, and building intelligent systems.">
+  <meta property="og:title" content="Xibin Li - AI Engineer">
+  <meta property="og:description" content="AI Engineer focused on artificial intelligence, machine learning, and building intelligent systems.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #e0e0e0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 24px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 64px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .header .title {
+      font-size: 0.95rem;
+      color: #888;
+      font-weight: 400;
+    }
+
+    /* Projects */
+    .projects {
+      margin-bottom: 64px;
+    }
+
+    .project {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid #1a1a1a;
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s ease;
+    }
+
+    .project:last-child {
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .project:hover {
+      opacity: 1;
+    }
+
+    .project:hover .project-name {
+      color: #5b9bf7;
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #151515;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    .project-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .project-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .project-arrow {
+      color: #333;
+      flex-shrink: 0;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project:hover .project-arrow {
+      color: #5b9bf7;
+      transform: translateX(3px);
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer a {
+      color: #555;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer a:hover {
+      color: #5b9bf7;
+    }
+
+    .footer svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      body {
+        padding: 48px 20px;
+        align-items: flex-start;
+      }
+
+      .header {
+        margin-bottom: 48px;
+      }
+
+      .project-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>Xibin Li</h1>
+      <p class="title">AI Engineer</p>
+    </header>
+
+    <!-- Projects -->
+    <section class="projects">
+      <a class="project" href="#">
+        <div class="project-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Project Alpha</div>
+          <div class="project-desc">An intelligent system for natural language understanding and generation.</div>
+        </div>
+        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 12l4-4-4-4"/>
+        </svg>
+      </a>
+
+      <a class="project" href="#">
+        <div class="project-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Project Beta</div>
+          <div class="project-desc">Real-time data pipeline for ML model training and inference.</div>
+        </div>
+        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 12l4-4-4-4"/>
+        </svg>
+      </a>
+
+      <a class="project" href="#">
+        <div class="project-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Project Gamma</div>
+          <div class="project-desc">Computer vision toolkit for image recognition and object detection.</div>
+        </div>
+        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 12l4-4-4-4"/>
+        </svg>
+      </a>
+
+      <a class="project" href="#">
+        <div class="project-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+          </svg>
+        </div>
+        <div class="project-info">
+          <div class="project-name">Project Delta</div>
+          <div class="project-desc">Conversational AI assistant with multi-turn dialogue capabilities.</div>
+        </div>
+        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 12l4-4-4-4"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <a href="https://github.com/lxb12123" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+      </a>
+      <a href="mailto:lixibin023@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/>
+        </svg>
+        Email
+      </a>
+    </footer>
+  </div>
+</body>
+</html>
