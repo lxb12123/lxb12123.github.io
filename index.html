@@ -23,6 +23,9 @@
       color: #e0e0e0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       min-height: 100vh;
+      position: relative;
+      isolation: isolate;
+      overflow-x: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -31,9 +34,94 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Quiet mathematical illustrations live in the page margins. */
+    .math-background {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 19%, rgba(48, 92, 158, 0.10), transparent 27%),
+        radial-gradient(circle at 87% 81%, rgba(97, 63, 149, 0.09), transparent 29%);
+    }
+
+    .math-art {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0.72;
+      user-select: none;
+    }
+
+    .math-art img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .math-caption {
+      color: rgba(171, 191, 221, 0.72);
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1rem;
+      font-style: italic;
+      letter-spacing: 0.035em;
+      white-space: nowrap;
+    }
+
+    .math-caption small {
+      display: block;
+      margin-top: 8px;
+      color: rgba(136, 163, 201, 0.55);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 0.75rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .math-art--choice {
+      top: 11%;
+      left: max(2%, calc((100vw - 1580px) / 7));
+      width: min(27vw, 470px);
+      transform: rotate(-5deg);
+    }
+
+    .math-art--choice .math-caption { margin-top: -10px; }
+
+    .math-art--euler {
+      top: 9%;
+      right: max(3%, calc((100vw - 1580px) / 7));
+      width: min(25vw, 390px);
+      transform: rotate(7deg);
+    }
+
+    .math-art--euler .math-caption { margin-top: -8px; }
+
+    .math-art--rose {
+      bottom: 4%;
+      left: max(3%, calc((100vw - 1580px) / 7));
+      width: min(28vw, 430px);
+      transform: rotate(-10deg);
+    }
+
+    .math-art--rose .math-caption { margin-top: -8px; }
+
+    .math-art--mandelbrot {
+      right: max(2%, calc((100vw - 1580px) / 7));
+      bottom: 4%;
+      width: min(31vw, 470px);
+      transform: rotate(5deg);
+    }
+
+    .math-art--mandelbrot .math-caption { margin-top: -20px; }
+
     .container {
       max-width: 560px;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     /* Header */
@@ -152,6 +240,23 @@
     }
 
     /* Responsive */
+    @media (max-width: 1100px) {
+      .math-art { opacity: 0.38; }
+      .math-caption { display: none; }
+      .container {
+        background: linear-gradient(90deg, rgba(10, 10, 10, 0.72), rgba(10, 10, 10, 0.88) 25%, rgba(10, 10, 10, 0.88) 75%, rgba(10, 10, 10, 0.72));
+        box-shadow: 0 0 55px 34px rgba(10, 10, 10, 0.45);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .math-art { opacity: 0.22; }
+      .math-art--choice { top: 1%; left: -105px; width: 270px; }
+      .math-art--euler { top: 22%; right: -98px; width: 255px; }
+      .math-art--rose { bottom: 21%; left: -96px; width: 260px; }
+      .math-art--mandelbrot { bottom: -2%; right: -120px; width: 300px; }
+    }
+
     @media (max-width: 480px) {
       body {
         padding: 48px 20px;
@@ -172,6 +277,24 @@
   </style>
 </head>
 <body>
+  <div class="math-background" aria-hidden="true">
+    <div class="math-art math-art--choice">
+      <img src="assets/best-choice.svg" width="520" height="330" alt="">
+      <span class="math-caption">P(x) = −x ln x <small>1/e ≈ 36.8%</small></span>
+    </div>
+    <div class="math-art math-art--euler">
+      <img src="assets/euler-circle.svg" width="420" height="380" alt="">
+      <span class="math-caption">e<sup>iπ</sup> + 1 = 0</span>
+    </div>
+    <div class="math-art math-art--rose">
+      <img src="assets/rose-curve.svg" width="420" height="420" alt="">
+      <span class="math-caption">r = cos(5θ)</span>
+    </div>
+    <div class="math-art math-art--mandelbrot">
+      <img src="assets/mandelbrot.png" width="820" height="620" alt="">
+      <span class="math-caption">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</span>
+    </div>
+  </div>
   <div class="container">
     <!-- Header -->
     <header class="header">
