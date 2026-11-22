@@ -1,385 +1,359 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xibin Li - AI Engineer</title>
-  <meta name="description" content="Xibin Li, AI Engineer based in China. Focused on artificial intelligence, machine learning, and building intelligent systems.">
-  <meta property="og:title" content="Xibin Li - AI Engineer">
-  <meta property="og:description" content="AI Engineer focused on artificial intelligence, machine learning, and building intelligent systems.">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李喜彬 — AI Engineer</title>
+<meta name="description" content="李喜彬（lixibin），AI 工程师。2 年多 AI 开发经验，做 Agent 上下文、Memory、MCP 与后端系统。">
+<meta property="og:title" content="李喜彬 — AI Engineer">
+<meta property="og:description" content="AI 工程师，做 Agent、Memory、MCP 与后端系统。">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --paper:#fbfaf7; --ink:#1d1b19; --body:#37352f; --muted:#6f6c66;
+    --faint:#a6a29a; --line:#e6e3db; --line-2:#efede7; --link:#2f6f9f;
+    --serif:"Iowan Old Style","Songti SC",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;
+    --mono:"SF Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--body);font-family:var(--sans);font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:#e8ddcf}
+  .wrap{position:relative;z-index:1;width:min(820px,calc(100% - 64px));margin:0 auto}
 
-    body {
-      background-color: #0a0a0a;
-      color: #e0e0e0;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      min-height: 100vh;
-      position: relative;
-      isolation: isolate;
-      overflow-x: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 24px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
 
-    /* Quiet mathematical illustrations live in the page margins. */
-    .math-background {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 19%, rgba(48, 92, 158, 0.10), transparent 27%),
-        radial-gradient(circle at 87% 81%, rgba(97, 63, 149, 0.09), transparent 29%);
-    }
+  /* fixed background art */
+  .bg-art{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .bg-art .a{position:absolute;opacity:.12}
+  .bg-art .a svg,.bg-art .a img{width:100%;height:100%;display:block;object-fit:contain}
+  .bg-art .a1{left:2vw;top:12vh;width:200px;height:200px}
+  .bg-art .a2{right:2.5vw;top:18vh;width:170px;height:170px}
+  .bg-art .a3{left:4.5vw;bottom:7vh;width:160px;height:160px}
+  .bg-art .a4{right:1.5vw;bottom:12vh;width:210px;height:210px}
+  @media (max-width:900px){
+    .f-row{grid-template-columns:1fr;gap:14px}
+    .f-slot{width:100%;height:140px}
+  }
+  @media (max-width:760px){.bg-art{display:none}}
 
-    .math-art {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      opacity: 0.72;
-      user-select: none;
-    }
 
-    .math-art img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+  /* intro */
+  .intro{margin-top:24px}
+  .intro .hi{font-size:17px;font-weight:500;color:var(--ink)}
+  .intro p{font-size:15px;line-height:1.8;color:var(--body);margin-top:6px}
+  .hi-list{margin-top:12px;font-size:13.5px;line-height:1.9;color:var(--muted)}
+  .stack{margin-top:24px;padding-top:14px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:10px;letter-spacing:.04em;line-height:1.9;color:var(--faint)}
 
-    .math-caption {
-      color: rgba(171, 191, 221, 0.72);
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1rem;
-      font-style: italic;
-      letter-spacing: 0.035em;
-      white-space: nowrap;
-    }
+  /* jobs */
+  .job{padding:22px 0;border-bottom:1px solid var(--line-2)}
+  .job:last-child{border-bottom:0;padding-bottom:4px}
+  .job-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline}
+  .job-head h3{font-size:15.5px;font-weight:600;color:var(--ink)}
+  .job-head span{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--faint);white-space:nowrap}
+  .job-role{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .job-desc{font-size:12.5px;line-height:1.7;color:var(--muted);margin-top:8px;max-width:640px}
+  .job-list{list-style:none;margin:12px 0 0;padding:0}
+  .job-list li{position:relative;padding-left:16px;margin:8px 0;font-size:13px;line-height:1.8;color:var(--body);max-width:700px}
+  .job-list li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+  .job-list b{font-weight:600;color:var(--ink)}
 
-    .math-caption small {
-      display: block;
-      margin-top: 8px;
-      color: rgba(136, 163, 201, 0.55);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 0.75rem;
-      font-style: normal;
-      letter-spacing: 0.08em;
-      text-align: center;
-    }
+  /* masthead */
+  .masthead{display:flex;align-items:center;justify-content:space-between;gap:32px;height:80px;border-bottom:1px solid var(--line)}
+  .wordmark{display:flex;align-items:center;gap:14px;min-width:0}
+  .wordmark .name{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.005em;color:var(--ink);line-height:1}
+  .wordmark .rule{width:1px;height:15px;background:var(--line);flex:none}
+  .wordmark .role{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+  .nav{display:flex;align-items:center;gap:30px;font-size:13px;color:var(--muted)}
+  .nav a{transition:color .15s}
+  .nav a:hover{color:var(--ink)}
+  .nav .ext{color:var(--ink);border-bottom:1px solid #d9d5cb;padding-bottom:1px}
+  .nav .ext:hover{border-color:var(--ink)}
 
-    .math-art--choice {
-      top: 11%;
-      left: max(2%, calc((100vw - 1580px) / 7));
-      width: min(27vw, 470px);
-      transform: rotate(-5deg);
-    }
+  main{padding:40px 0 64px}
+  .about{font-size:16px;line-height:1.95;color:var(--body);max-width:680px}
+  .about b{font-weight:500;color:var(--ink)}
 
-    .math-art--choice .math-caption { margin-top: -10px; }
+  section{margin-top:34px;padding-top:20px;border-top:1px solid var(--line)}
+  .sec-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+  h2{font-family:var(--serif);font-size:21px;font-weight:500;letter-spacing:-.005em;color:var(--ink);margin:7px 0 4px}
+  .sec-note{font-size:12.5px;color:var(--muted);max-width:620px}
 
-    .math-art--euler {
-      top: 9%;
-      right: max(3%, calc((100vw - 1580px) / 7));
-      width: min(25vw, 390px);
-      transform: rotate(7deg);
-    }
 
-    .math-art--euler .math-caption { margin-top: -8px; }
+  /* formula rows */
+  .creeds{position:relative}
+  .f-row{display:grid;grid-template-columns:1fr 230px;gap:40px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line-2)}
+  .f-text{min-width:0}
+  .f-slot{width:230px;height:150px}
+  .f-row:last-child{border-bottom:0;padding-bottom:4px}
+    .f-num{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--faint)}
+  .f-row h3{font-size:15.5px;font-weight:500;color:var(--ink);margin:3px 0 4px}
+  .f-row p{font-size:13px;line-height:1.75;color:var(--muted);max-width:640px}
+  .f-meta{margin-top:8px;font-size:11.5px;line-height:1.7;color:var(--faint)}
+  .f-meta b{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;font-weight:500;color:var(--faint);margin-right:6px}
+  .f-meta span{color:var(--muted)}
 
-    .math-art--rose {
-      bottom: 4%;
-      left: max(3%, calc((100vw - 1580px) / 7));
-      width: min(28vw, 430px);
-      transform: rotate(-10deg);
-    }
+  /* projects */
+  .p-row{display:grid;grid-template-columns:1fr auto;gap:20px;padding:15px 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+  .p-row:last-child{border-bottom:0}
+  .p-row h3{font-size:14.5px;font-weight:500;color:var(--ink)}
+  .p-row p{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .p-row a{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--faint);white-space:nowrap}
+  .p-row:hover a{color:var(--link)}
 
-    .math-art--rose .math-caption { margin-top: -8px; }
-
-    .math-art--mandelbrot {
-      right: max(2%, calc((100vw - 1580px) / 7));
-      bottom: 4%;
-      width: min(31vw, 470px);
-      transform: rotate(5deg);
-    }
-
-    .math-art--mandelbrot .math-caption { margin-top: -20px; }
-
-    .container {
-      max-width: 560px;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Header */
-    .header {
-      margin-bottom: 64px;
-    }
-
-    .header h1 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
-    }
-
-    .header .title {
-      font-size: 0.95rem;
-      color: #888;
-      font-weight: 400;
-    }
-
-    /* Projects */
-    .projects {
-      margin-bottom: 64px;
-    }
-
-    .project {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px 0;
-      border-top: 1px solid #1a1a1a;
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 0.2s ease;
-    }
-
-    .project:last-child {
-      border-bottom: 1px solid #1a1a1a;
-    }
-
-    .project:hover {
-      opacity: 1;
-    }
-
-    .project:hover .project-name {
-      color: #5b9bf7;
-    }
-
-    .project-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: #151515;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.2rem;
-    }
-
-    .project-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .project-name {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #ffffff;
-      margin-bottom: 4px;
-      transition: color 0.2s ease;
-    }
-
-    .project-desc {
-      font-size: 0.85rem;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .project-arrow {
-      color: #333;
-      flex-shrink: 0;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .project:hover .project-arrow {
-      color: #5b9bf7;
-      transform: translateX(3px);
-    }
-
-    /* Footer */
-    .footer {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer a {
-      color: #555;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      transition: color 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer a:hover {
-      color: #5b9bf7;
-    }
-
-    .footer svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    /* Responsive */
-    @media (max-width: 1100px) {
-      .math-art { opacity: 0.38; }
-      .math-caption { display: none; }
-      .container {
-        background: linear-gradient(90deg, rgba(10, 10, 10, 0.72), rgba(10, 10, 10, 0.88) 25%, rgba(10, 10, 10, 0.88) 75%, rgba(10, 10, 10, 0.72));
-        box-shadow: 0 0 55px 34px rgba(10, 10, 10, 0.45);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .math-art { opacity: 0.22; }
-      .math-art--choice { top: 1%; left: -105px; width: 270px; }
-      .math-art--euler { top: 22%; right: -98px; width: 255px; }
-      .math-art--rose { bottom: 21%; left: -96px; width: 260px; }
-      .math-art--mandelbrot { bottom: -2%; right: -120px; width: 300px; }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding: 48px 20px;
-        align-items: flex-start;
-      }
-
-      .header {
-        margin-bottom: 48px;
-      }
-
-      .project-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        font-size: 1rem;
-      }
-    }
-  </style>
+  /* contact / foot */
+  .contact{margin-top:54px;padding-top:24px;border-top:1px solid var(--line)}
+  .contact p{font-size:13.5px;color:var(--muted);margin-top:10px}
+  .contact a.mail{font-family:var(--serif);font-size:17px;color:var(--ink);border-bottom:1px solid #cfcac0}
+  .contact a.mail:hover{color:var(--link);border-color:var(--link)}
+  .foot{display:flex;justify-content:space-between;gap:20px;padding:30px 0 50px;margin-top:44px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}
+  .foot a:hover{color:var(--ink)}
+</style>
 </head>
 <body>
-  <div class="math-background" aria-hidden="true">
-    <div class="math-art math-art--choice">
-      <img src="assets/best-choice.svg" width="520" height="330" alt="">
-      <span class="math-caption">P(x) = −x ln x <small>1/e ≈ 36.8%</small></span>
-    </div>
-    <div class="math-art math-art--euler">
-      <img src="assets/euler-circle.svg" width="420" height="380" alt="">
-      <span class="math-caption">e<sup>iπ</sup> + 1 = 0</span>
-    </div>
-    <div class="math-art math-art--rose">
-      <img src="assets/rose-curve.svg" width="420" height="420" alt="">
-      <span class="math-caption">r = cos(5θ)</span>
-    </div>
-    <div class="math-art math-art--mandelbrot">
-      <img src="assets/mandelbrot.png" width="820" height="620" alt="">
-      <span class="math-caption">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</span>
-    </div>
-  </div>
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
-      <h1>Xibin Li</h1>
-      <p class="title">AI Engineer</p>
-    </header>
 
-    <!-- Projects -->
-    <section class="projects">
-      <a class="project" href="#">
-        <div class="project-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-          </svg>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Project Alpha</div>
-          <div class="project-desc">An intelligent system for natural language understanding and generation.</div>
-        </div>
-        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 12l4-4-4-4"/>
-        </svg>
-      </a>
+<div class="bg-art" aria-hidden="true">
+  <div class="a a1"><svg id="a0" viewBox="0 0 120 120"></svg></div>
+  <div class="a a2"><svg id="a1" viewBox="0 0 120 120"></svg></div>
+  <div class="a a3"><svg id="a2" viewBox="0 0 120 120"></svg></div>
+  <div class="a a4"><img src="assets/mandel-solid.png" alt=""></div>
+</div>
 
-      <a class="project" href="#">
-        <div class="project-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-          </svg>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Project Beta</div>
-          <div class="project-desc">Real-time data pipeline for ML model training and inference.</div>
-        </div>
-        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 12l4-4-4-4"/>
-        </svg>
-      </a>
+<div class="wrap">
+  <header class="masthead">
+    <div class="wordmark">
+      <span class="name">李喜彬</span>
+      <span class="rule"></span>
+      <span class="role">lixibin · AI Engineer</span>
+    </div>
+    <nav class="nav">
+      <a href="#experience">经历</a>
+      <a href="#work">作品</a>
+      <a href="#ideas">信条</a>
+      <a href="#contact">联系</a>
+      <a class="ext" href="https://github.com/lxb12123">GitHub ↗</a>
+    </nav>
+  </header>
 
-      <a class="project" href="#">
-        <div class="project-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/>
-          </svg>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Project Gamma</div>
-          <div class="project-desc">Computer vision toolkit for image recognition and object detection.</div>
-        </div>
-        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 12l4-4-4-4"/>
-        </svg>
-      </a>
+  <main>
+    <div class="intro">
+      <p class="hi">Hey 👋, I'm lixibin.</p>
+      <p>I am currently working on AI and open-source projects.</p>
+      <div class="hi-list">
+        <div>🔭 Building tools around AI agents and developer workflows</div>
+        <div>⚡ Interested in open-source, model engineering, and creative coding</div>
+      </div>
+      <div class="stack">Go · Python · PostgreSQL · Redis · Agent / Memory / MCP · OAuth 2.0 · Stripe · Docker · AWS</div>
+    </div>
 
-      <a class="project" href="#">
-        <div class="project-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5b9bf7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-          </svg>
-        </div>
-        <div class="project-info">
-          <div class="project-name">Project Delta</div>
-          <div class="project-desc">Conversational AI assistant with multi-turn dialogue capabilities.</div>
-        </div>
-        <svg class="project-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 12l4-4-4-4"/>
-        </svg>
-      </a>
+    <section id="experience">
+      <div class="sec-label">01 — 经历</div>
+      <h2>做过的事。</h2>
+      <p class="sec-note">2 年多 AI 开发经验；所在 GitHub 组织的仓库累计约 86k Star。</p>
+
+      <div class="job">
+        <div class="job-head"><h3>厦门宇宙极限智能科技有限公司</h3><span>2025.09 — 至今</span></div>
+        <div class="job-role">AI 工程师 · Egonex</div>
+        <p class="job-desc">面向美国市场的 AI 社交与个人卖家交易平台，负责主后端、Agent 接入与外部连接器。</p>
+        <ul class="job-list">
+          <li><b>Go 主后端</b>：2026 年 3 月初始化后端，约 40 天搭起 Gin + PostgreSQL + Redis 主干，覆盖认证、聊天、钱包、KYC、动态与限流；按 handler / service / db 分层，关键写入用事务与唯一约束保证幂等。</li>
+          <li><b>Agent 上下文与调度</b>：新建 Ego 聊天助手与注册问答两个 Python 服务，按 token 预算组织会话历史、记忆与画像；找人意图优先用按钮、会话状态和高置信规则识别，其余并入回复调用，减少模型请求与首字等待。</li>
+          <li><b>Memory 链路</b>：业务事件 outbox + 独立投递任务，事务内记录、异步批量处理；补齐坏件隔离、重试与撤权擦除；修复 Go / Python 时间格式差异导致的批量拒收。</li>
+          <li><b>MCP 与开放接口</b>：负责对外 MCP 协议适配，处理工具发现、调用、身份识别与错误返回；业务层同时提供 MCP 与 REST / OpenAPI，覆盖搜索、咨询、报价、下单、付款、售后。</li>
+          <li><b>跨平台连接与 OAuth</b>：区分 Muse 固定凭证、Claude 连接器、ChatGPT 匿名限额与 Grok 自定义 MCP URL；实现授权码 + PKCE（S256）、令牌轮换与即时撤销，处理并发刷新。</li>
+          <li><b>防刷与付款可靠性</b>：按最细身份计数限流，兼顾共享出口误伤；订单锁 + 付款尝试 + Stripe 元数据防重复扣款，状态不确定时后台对账。</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head"><h3>福州美特思信息技术有限公司</h3><span>2025.05 — 2025.09</span></div>
+        <div class="job-role">AI 算法工程师</div>
+        <ul class="job-list">
+          <li><b>AI 工作流</b>：用 Dify / Coze / n8n / FastGPT 搭建业务工作流并对接接口；封装、部署 ComfyUI 工作流 API，处理并发与图片代理；部署 MCP 服务供 AI 调用外部工具。</li>
+          <li><b>业务系统</b>：独立搭建钉钉宜搭 CRM，覆盖线索、商机、客户、合同与报价；用 Vue 3 + TypeScript 接入 DeepSeek 报价助手，流式展示结果。</li>
+          <li><b>多平台视频发布</b>：基于 Flask + Playwright 独立开发视频发布工具，处理各平台登录态、上传步骤与页面交互。</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head"><h3>福建省川东科技有限公司</h3><span>2025.02 — 2025.04</span></div>
+        <div class="job-role">前端开发工程师</div>
+        <ul class="job-list">
+          <li><b>Android VPN 应用</b>：负责页面、连接逻辑与网络接口，适配不同 Android 版本与厂商 ROM 的权限，支持 Google Play 与官网发布。</li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <a href="https://github.com/lxb12123" target="_blank" rel="noopener noreferrer">
-        <svg viewBox="0 0 16 16" fill="currentColor">
-          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        GitHub
-      </a>
-      <a href="mailto:lixibin023@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/>
-        </svg>
-        Email
-      </a>
-    </footer>
-  </div>
+    <section id="work">
+      <div class="sec-label">02 — 作品</div>
+      <h2>做过的东西。</h2>
+      <p class="sec-note">三个公开仓库，都能点开。</p>
+
+      <div class="p-row">
+        <div><h3>microgpt 3D tutorial</h3><p>把 microGPT 的计算过程做成可交互的 3D 教学体验。</p></div>
+        <a href="https://github.com/lxb12123/microgpt-3d-tutorial">GITHUB ↗</a>
+      </div>
+      <div class="p-row">
+        <div><h3>prompt-pocket</h3><p>跨 coding agent 记录并复用高频提示词。</p></div>
+        <a href="https://github.com/lxb12123/prompt-pocket">GITHUB ↗</a>
+      </div>
+      <div class="p-row">
+        <div><h3>agent-plugin-kit</h3><p>生成可验证、可安装、支持多宿主的 Agent 插件。</p></div>
+        <a href="https://github.com/lxb12123/agent-plugin-kit">GITHUB ↗</a>
+      </div>
+    </section>
+
+    <section id="ideas" class="creeds">
+      <div class="sec-label">03 — 人生信条</div>
+      <h2>我信这四件事。</h2>
+      <p class="sec-note">四条公式，是我做决定时的四个锚点。先看人话，再看数学，最后看它管不到的地方。</p>
+
+      <div class="f-row">
+        <div class="f-text">
+          <div class="f-num">01 / 选择</div>
+          <h3>先观察，再勇敢选择。</h3>
+          <p>信息不足时硬选，和看清之后还拖，是同一种错。我信的是：先允许自己多看一眼，然后在好机会出现时敢下注。</p>
+          <div class="f-meta"><b>数学范围</b><span>P(x) = −x ln x 在 x = 1/e ≈ 36.8% 取最大值；秘书问题 / 最优停止。</span></div>
+          <div class="f-meta"><b>边界</b><span>能回头、能并行比较时，37% 不再是答案。</span></div>
+        </div>
+        <div class="f-slot"></div>
+      </div>
+
+      <div class="f-row">
+        <div class="f-text">
+          <div class="f-num">02 / 连接</div>
+          <h3>把不同的语言，连成一个整体。</h3>
+          <p>复杂往往不是东西多，是还没找到那个统一的视角。我信的是：先把概念接上，再谈实现。</p>
+          <div class="f-meta"><b>数学范围</b><span>欧拉公式 e<sup>iθ</sup> = cos θ + i sin θ，复平面上的旋转。</span></div>
+          <div class="f-meta"><b>边界</b><span>这是恒等式，不是「万物相连」的证明。</span></div>
+        </div>
+        <div class="f-slot"></div>
+      </div>
+
+      <div class="f-row">
+        <div class="f-text">
+          <div class="f-num">03 / 秩序</div>
+          <h3>在约束里，长出自己的形状。</h3>
+          <p>规则不是牢笼，是形状的来源。我信的是：先把约束写清楚，再在里面探索。</p>
+          <div class="f-meta"><b>数学范围</b><span>极坐标玫瑰线，r = cos(5θ)，五片花瓣。</span></div>
+          <div class="f-meta"><b>边界</b><span>平面曲线的几何形状，推不出自然界五重对称。</span></div>
+        </div>
+        <div class="f-slot"></div>
+      </div>
+
+      <div class="f-row">
+        <div class="f-text">
+          <div class="f-num">04 / 复杂</div>
+          <h3>简单规则，也能遇见复杂世界。</h3>
+          <p>我信的是：先写出可以检验的规则，再耐心看它在不同条件下会发生什么。复杂性常藏在边界。</p>
+          <div class="f-meta"><b>数学范围</b><span>z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c，有界 / 逃逸。</span></div>
+          <div class="f-meta"><b>边界</b><span>有限次迭代不等于证明永远有界。</span></div>
+        </div>
+        <div class="f-slot"></div>
+      </div>
+    </section>
+
+    <div class="contact" id="contact">
+      <div class="sec-label">04 — 联系</div>
+      <p>如果你也在做类似的事，欢迎发邮件。</p>
+      <p><a class="mail" href="mailto:2060154107@qq.com">2060154107@qq.com</a></p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <span>© 2026 李喜彬</span>
+    <span><a href="https://github.com/lxb12123">GITHUB</a> · <a href="mailto:2060154107@qq.com">EMAIL</a></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  const INK='#1d1b19', AXIS='#c9c4ba', DIM='#a6a29a';
+  const mk=(t,a,p)=>{const n=document.createElementNS(NS,t);for(const k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;};
+
+  function entropy(s){
+    const x0=12,x1=108,y0=100,y1=18,h=y0-y1-8;
+    mk('line',{x1:x0,x2:x1,y1:y0,y2:y0,stroke:AXIS,'stroke-width':1},s);
+    mk('line',{x1:x0,x2:x0,y1:y0,y2:y1,stroke:AXIS,'stroke-width':1},s);
+    const pts=[];
+    for(let i=0;i<=140;i++){const t=i/140;const x=0.008+t*0.992;const y=(-x*Math.log(x))/(1/Math.E);pts.push([x0+t*(x1-x0),y0-y*h]);}
+    const d='M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' L');
+    mk('path',{d,fill:'none',stroke:INK,'stroke-width':1.6,'stroke-linecap':'round'},s);
+    const px=x0+(1/Math.E)*(x1-x0),py=y0-h;
+    mk('line',{x1:px,x2:px,y1:py,y2:y0,stroke:DIM,'stroke-width':1,'stroke-dasharray':'2 3'},s);
+    mk('circle',{cx:px,cy:py,r:2.6,fill:INK},s);
+  }
+  function euler(s){
+    const cx=60,cy=60,r=36;
+    mk('circle',{cx,cy,r,fill:'none',stroke:AXIS,'stroke-width':1},s);
+    mk('line',{x1:cx-r-10,x2:cx+r+10,y1:cy,y2:cy,stroke:AXIS,'stroke-width':1},s);
+    mk('line',{x1:cx,x2:cx,y1:cy-r-10,y2:cy+r+10,stroke:AXIS,'stroke-width':1},s);
+    mk('path',{d:`M ${cx+r} ${cy} A ${r} ${r} 0 0 0 ${cx-r} ${cy}`,fill:'none',stroke:DIM,'stroke-width':1,'stroke-dasharray':'2 4'},s);
+    mk('line',{x1:cx,y1:cy,x2:cx-r+2,y2:cy,stroke:INK,'stroke-width':1.8,'stroke-linecap':'round'},s);
+    mk('path',{d:`M ${cx-r} ${cy} l 7 -3.2 l 0 6.4 z`,fill:INK},s);
+    mk('circle',{cx:cx-r,cy,r:2.4,fill:INK},s);
+  }
+  function rose(s){
+    const cx=60,cy=60,R=42;
+    mk('circle',{cx,cy,r:R,fill:'none',stroke:'#e6e3db','stroke-width':1},s);
+    const pts=[];
+    for(let i=0;i<=720;i++){const th=Math.PI*i/720;const rr=Math.cos(5*th);pts.push([cx+R*rr*Math.cos(th),cy-R*rr*Math.sin(th)]);}
+    const d='M'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' L')+' Z';
+    mk('path',{d,fill:'none',stroke:INK,'stroke-width':1.4,'stroke-linejoin':'round'},s);
+    mk('circle',{cx,cy,r:2,fill:INK},s);
+  }
+  [['a0',entropy],['a1',euler],['a2',rose]].forEach(([id,fn])=>{const el=document.getElementById(id);if(el)fn(el);});
+
+  /* background icons dock to their row while it is on screen */
+  const art=[...document.querySelectorAll('.bg-art .a')];
+  const rows=[...document.querySelectorAll('.f-row')];
+  const cfg=art.map((el,i)=>({el, side:i%2===0?'left':'right', base:null, docked:false, cur:{x:0,y:0,s:1,o:.12}}));
+
+  function measure(){
+    cfg.forEach(c=>{ c.el.style.transform='none'; c.el.style.opacity='.12'; });
+    cfg.forEach(c=>{
+      const r=c.el.getBoundingClientRect();
+      c.base={x:r.left+r.width/2, y:r.top+r.height/2, w:r.width, h:r.height};
+      c.cur={x:0,y:0,s:1,o:.12}; c.docked=false;
+    });
+  }
+  measure();
+
+  let lastY=scrollY;
+  function dock(){
+    const vh=innerHeight, y=scrollY;
+    const down = y > lastY + 0.5;
+    const up = y < lastY - 0.5;
+    lastY = y;
+    cfg.forEach((c,i)=>{
+      const row=rows[i];
+      if(!row) return;
+      const rr=row.getBoundingClientRect();
+      const inBand = rr.top < vh*0.72 && rr.bottom > vh*0.26;
+      if(down && inBand) c.docked = true;
+      if(up && rr.top > vh*0.98) c.docked = false;
+      let tx=0,ty=0,s=1,o=.12;
+      if(c.docked){
+        const slot=document.querySelectorAll('.f-slot')[i];
+        const sr=slot.getBoundingClientRect();
+        s=Math.min(sr.width*0.92/c.base.w, sr.height*0.92/c.base.h);
+        tx=(sr.left+sr.width/2)-c.base.x;
+        ty=(sr.top+sr.height/2)-c.base.y;
+        o=.55;
+      }
+      c.cur.x += (tx-c.cur.x)*0.11;
+      c.cur.y += (ty-c.cur.y)*0.11;
+      c.cur.s += (s-c.cur.s)*0.11;
+      c.cur.o += (o-c.cur.o)*0.08;
+      c.el.style.transform='translate('+c.cur.x.toFixed(1)+'px,'+c.cur.y.toFixed(1)+'px) scale('+c.cur.s.toFixed(3)+')';
+      c.el.style.opacity=c.cur.o.toFixed(3);
+    });
+    requestAnimationFrame(dock);
+  }
+  requestAnimationFrame(dock);
+  addEventListener('resize', measure);
+})();
+</script>
 </body>
 </html>
