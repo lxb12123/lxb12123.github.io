@@ -131,7 +131,7 @@
       <span class="role">lixibin · AI Engineer</span>
     </div>
     <nav class="nav">
-      <a href="#experience">经历</a>
+      <a href="assets/lixibin-cv.pdf" target="_blank" rel="noopener">CV</a>
       <a href="#work">作品</a>
       <a href="#ideas">信条</a>
       <a href="#contact">联系</a>
@@ -150,46 +150,8 @@
       <div class="stack">Go · Python · PostgreSQL · Redis · Agent / Memory / MCP · OAuth 2.0 · Stripe · Docker · AWS</div>
     </div>
 
-    <section id="experience">
-      <div class="sec-label">01 — 经历</div>
-      <h2>做过的事。</h2>
-      <p class="sec-note">2 年多 AI 开发经验；所在 GitHub 组织的仓库累计约 86k Star。</p>
-
-      <div class="job">
-        <div class="job-head"><h3>厦门宇宙极限智能科技有限公司</h3><span>2025.09 — 至今</span></div>
-        <div class="job-role">AI 工程师 · Egonex</div>
-        <p class="job-desc">面向美国市场的 AI 社交与个人卖家交易平台，负责主后端、Agent 接入与外部连接器。</p>
-        <ul class="job-list">
-          <li><b>Go 主后端</b>：2026 年 3 月初始化后端，约 40 天搭起 Gin + PostgreSQL + Redis 主干，覆盖认证、聊天、钱包、KYC、动态与限流；按 handler / service / db 分层，关键写入用事务与唯一约束保证幂等。</li>
-          <li><b>Agent 上下文与调度</b>：新建 Ego 聊天助手与注册问答两个 Python 服务，按 token 预算组织会话历史、记忆与画像；找人意图优先用按钮、会话状态和高置信规则识别，其余并入回复调用，减少模型请求与首字等待。</li>
-          <li><b>Memory 链路</b>：业务事件 outbox + 独立投递任务，事务内记录、异步批量处理；补齐坏件隔离、重试与撤权擦除；修复 Go / Python 时间格式差异导致的批量拒收。</li>
-          <li><b>MCP 与开放接口</b>：负责对外 MCP 协议适配，处理工具发现、调用、身份识别与错误返回；业务层同时提供 MCP 与 REST / OpenAPI，覆盖搜索、咨询、报价、下单、付款、售后。</li>
-          <li><b>跨平台连接与 OAuth</b>：区分 Muse 固定凭证、Claude 连接器、ChatGPT 匿名限额与 Grok 自定义 MCP URL；实现授权码 + PKCE（S256）、令牌轮换与即时撤销，处理并发刷新。</li>
-          <li><b>防刷与付款可靠性</b>：按最细身份计数限流，兼顾共享出口误伤；订单锁 + 付款尝试 + Stripe 元数据防重复扣款，状态不确定时后台对账。</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-head"><h3>福州美特思信息技术有限公司</h3><span>2025.05 — 2025.09</span></div>
-        <div class="job-role">AI 算法工程师</div>
-        <ul class="job-list">
-          <li><b>AI 工作流</b>：用 Dify / Coze / n8n / FastGPT 搭建业务工作流并对接接口；封装、部署 ComfyUI 工作流 API，处理并发与图片代理；部署 MCP 服务供 AI 调用外部工具。</li>
-          <li><b>业务系统</b>：独立搭建钉钉宜搭 CRM，覆盖线索、商机、客户、合同与报价；用 Vue 3 + TypeScript 接入 DeepSeek 报价助手，流式展示结果。</li>
-          <li><b>多平台视频发布</b>：基于 Flask + Playwright 独立开发视频发布工具，处理各平台登录态、上传步骤与页面交互。</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-head"><h3>福建省川东科技有限公司</h3><span>2025.02 — 2025.04</span></div>
-        <div class="job-role">前端开发工程师</div>
-        <ul class="job-list">
-          <li><b>Android VPN 应用</b>：负责页面、连接逻辑与网络接口，适配不同 Android 版本与厂商 ROM 的权限，支持 Google Play 与官网发布。</li>
-        </ul>
-      </div>
-    </section>
-
     <section id="work">
-      <div class="sec-label">02 — 作品</div>
+      <div class="sec-label">01 — 作品</div>
       <h2>做过的东西。</h2>
       <p class="sec-note">三个公开仓库，都能点开。</p>
 
@@ -208,7 +170,7 @@
     </section>
 
     <section id="ideas" class="creeds">
-      <div class="sec-label">03 — 人生信条</div>
+      <div class="sec-label">02 — 人生信条</div>
       <h2>我信这四件事。</h2>
       <p class="sec-note">四条公式，是我做决定时的四个锚点。先看人话，再看数学，最后看它管不到的地方。</p>
 
@@ -258,9 +220,10 @@
     </section>
 
     <div class="contact" id="contact">
-      <div class="sec-label">04 — 联系</div>
+      <div class="sec-label">03 — 联系</div>
       <p>如果你也在做类似的事，欢迎发邮件。</p>
       <p><a class="mail" href="mailto:2060154107@qq.com">2060154107@qq.com</a></p>
+      <p class="cv-link"><a href="assets/lixibin-cv.pdf" target="_blank" rel="noopener">简历 PDF ↗</a></p>
     </div>
   </main>
 
