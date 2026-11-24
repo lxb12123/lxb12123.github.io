@@ -45,7 +45,11 @@
 
   /* bio */
 .bio-head{margin-top:26px;max-width:780px}
-  .avatar{width:128px;height:128px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 26px;border:1px solid var(--line)}
+  .avatar{width:128px;height:128px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 14px;border:1px solid var(--line)}
+  .profile{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 26px}
+  .profile .name{font-family:var(--serif);font-size:22px;color:var(--ink);line-height:1}
+  .profile .rule{width:1px;height:15px;background:var(--line)}
+  .profile .role{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#8a867e}
   .bio-body{min-width:0}
   .bio-body .bio{margin-top:0}
   .bio{font-size:15px;line-height:1.95;color:var(--body);max-width:700px}
@@ -72,7 +76,7 @@
   .job-list b{font-weight:600;color:var(--ink)}
 
   /* masthead */
-  .masthead{display:flex;align-items:center;justify-content:space-between;gap:32px;height:80px;border-bottom:1px solid var(--line)}
+  .masthead{display:flex;align-items:center;justify-content:flex-end;gap:32px;height:80px;border-bottom:1px solid var(--line)}
   .wordmark{display:flex;align-items:center;gap:14px;min-width:0}
   .wordmark .name{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.005em;color:var(--ink);line-height:1}
   .wordmark .rule{width:1px;height:15px;background:var(--line);flex:none}
@@ -134,11 +138,7 @@
 
 <div class="wrap">
   <header class="masthead">
-    <div class="wordmark">
-      <span class="name">李喜彬</span>
-      <span class="rule"></span>
-      <span class="role">lixibin · AI Engineer</span>
-    </div>
+
     <nav class="nav">
       <a href="cv.html">CV</a>
       <a href="#ideas">信条</a>
@@ -150,6 +150,11 @@
   <main>
     <div class="bio-head">
       <img class="avatar" src="assets/avatar.png?v=4" alt="李喜彬">
+      <div class="profile">
+        <span class="name">李喜彬</span>
+        <span class="rule"></span>
+        <span class="role">LIXIBIN · AI ENGINEER</span>
+      </div>
       <div class="bio-body">
     <p class="bio">我是一名拥有 2 年多开发经验的 AI Agent 工程师，专注于 Agent Infra——运行时、上下文与工具接入，对 AI Infra 有整体了解。目前在厦门宇宙极限智能科技负责 Egonex 的 Go 主后端与 Agent 基础设施：约 40 天搭起基于 Gin、PostgreSQL、Redis 的服务主干，覆盖认证、聊天、钱包、KYC 与限流；设计 Agent 上下文、Memory 写入与 MCP 对外接口，并落地 OAuth 2.0 / PKCE、开放接口防刷与 Stripe 支付幂等，支撑面向美国市场的 AI 社交与交易产品。</p>
     <p class="bio bio-2">在此之前，我在福州美特思基于 Dify、Coze、n8n、LangGraph 搭建业务工作流，封装 ComfyUI 与 MCP 工具服务，也具备 Vue / TypeScript 前端与 Android 交付经验。</p>
