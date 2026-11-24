@@ -123,16 +123,37 @@
   .contact a.mail:hover{color:var(--link);border-color:var(--link)}
   .foot{display:flex;justify-content:space-between;gap:20px;padding:30px 0 50px;margin-top:44px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--faint)}
   .foot a:hover{color:var(--ink)}
+
+  /* scroll scenes */
+  .creeds{position:relative;height:400vh;margin-top:34px;padding-top:0;border-top:1px solid var(--line)}
+  .creed-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:40px 0 30px}
+  .creed-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:14px}
+  .creed-head h2{font-size:26px;margin-top:6px}
+  .creed-count{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--faint)}
+  .creed-body{position:relative;flex:1;min-height:0}
+  .scene{position:absolute;inset:0;display:grid;grid-template-columns:1fr 340px;gap:44px;align-items:center;opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease;pointer-events:none}
+  .scene.active{opacity:1;transform:none;pointer-events:auto}
+  .scene-text{min-width:0}
+  .scene-formula{font-family:var(--serif);font-size:19px;color:var(--ink);margin:4px 0 10px}
+  .scene h3{font-size:21px;line-height:1.6;font-weight:600;color:var(--ink);margin:0 0 12px;max-width:470px}
+  .scene p{font-size:13px;line-height:1.85;color:var(--muted);max-width:450px}
+  .scene-art{width:340px;height:300px;display:flex;align-items:center;justify-content:center}
+  .scene-art svg,.scene-art img{width:100%;height:100%;object-fit:contain;display:block}
+  .scene[data-i="0"] .scene-art{color:#2f6bff;filter:drop-shadow(0 0 12px rgba(47,107,255,.28))}
+  .scene[data-i="1"] .scene-art{color:#7a5af8;filter:drop-shadow(0 0 12px rgba(122,90,248,.28))}
+  .scene[data-i="2"] .scene-art{color:#c04ce0;filter:drop-shadow(0 0 12px rgba(192,76,224,.28))}
+  .scene[data-i="3"] .scene-art{filter:drop-shadow(0 0 12px rgba(14,154,167,.30))}
+  @media (max-width:760px){
+    .creeds{height:auto}
+    .creed-sticky{position:static;height:auto;padding:20px 0}
+    .creed-body{position:static}
+    .scene{position:relative;inset:auto;display:block;opacity:1;transform:none;margin:34px 0;pointer-events:auto}
+    .scene-art{width:100%;height:220px;margin-top:18px}
+  }
+
 </style>
 </head>
 <body>
-
-<div class="bg-art" aria-hidden="true">
-  <div class="a a1"><svg id="a0" viewBox="0 0 120 120"></svg></div>
-  <div class="a a2"><svg id="a1" viewBox="0 0 120 120"></svg></div>
-  <div class="a a3"><svg id="a2" viewBox="0 0 120 120"></svg></div>
-  <div class="a a4"><img src="assets/mandel-teal.png" alt=""></div>
-</div>
 
 <div class="wrap">
   <header class="masthead">
@@ -161,52 +182,65 @@
 
 
     <section id="ideas" class="creeds">
-      <div class="sec-label">01 — 人生信条</div>
-      <h2>我信这四件事。</h2>
-      <p class="sec-note">四条公式，是我做决定时的四个锚点。先看人话，再看数学，最后看它管不到的地方。</p>
-
-      <div class="f-row">
-        <div class="f-text">
-          <div class="f-num">01 / 选择</div>
-          <h3>真正成熟的选择，不是找到理论上最好的那一个，而是在足够了解之后，有能力停止比较，并且愿意为这个选择负责。</h3>
-          <p>信息不足时硬选，和看清之后还拖，是同一种错。我信的是：先允许自己多看一眼，然后在好机会出现时敢下注。</p>
-          <div class="f-meta"><b>数学范围</b><span>P(x) = −x ln x 在 x = 1/e ≈ 36.8% 取最大值；秘书问题 / 最优停止。</span></div>
-          <div class="f-meta"><b>边界</b><span>能回头、能并行比较时，37% 不再是答案。</span></div>
+      <div class="creed-sticky">
+        <div class="creed-head">
+          <div>
+            <div class="sec-label">01 — 人生信条</div>
+            <h2>我信这四件事。</h2>
+          </div>
+          <div class="creed-count"><span id="creed-now">01</span> / 04</div>
         </div>
-        <div class="f-slot"></div>
-      </div>
+        <div class="creed-body">
 
-      <div class="f-row">
-        <div class="f-text">
-          <div class="f-num">02 / 连接</div>
-          <h3>5 个看似毫无关系的陌生人，最后却在一行公式里相认，他们原来一直都是一家人。</h3>
-          <p>复杂往往不是东西多，是还没找到那个统一的视角。我信的是：先把概念接上，再谈实现。</p>
-          <div class="f-meta"><b>数学范围</b><span>欧拉公式 e<sup>iθ</sup> = cos θ + i sin θ，复平面上的旋转。</span></div>
-          <div class="f-meta"><b>边界</b><span>这是恒等式，不是「万物相连」的证明。</span></div>
-        </div>
-        <div class="f-slot"></div>
-      </div>
+          <article class="scene active" data-i="0">
+            <div class="scene-text">
+              <div class="f-num">01 / 选择</div>
+              <div class="scene-formula"><i>P</i>(<i>x</i>) = −<i>x</i> ln <i>x</i></div>
+              <h3>真正成熟的选择，不是找到理论上最好的那一个，而是在足够了解之后，有能力停止比较，并且愿意为这个选择负责。</h3>
+              <p>信息不足时硬选，和看清之后还拖，是同一种错。我信的是：先允许自己多看一眼，然后在好机会出现时敢下注。</p>
+              <div class="f-meta"><b>数学范围</b><span>P(x) = −x ln x 在 x = 1/e ≈ 36.8% 取最大值；秘书问题 / 最优停止。</span></div>
+              <div class="f-meta"><b>边界</b><span>能回头、能并行比较时，37% 不再是答案。</span></div>
+            </div>
+            <div class="scene-art"><svg id="s0" viewBox="0 0 120 120"></svg></div>
+          </article>
 
-      <div class="f-row">
-        <div class="f-text">
-          <div class="f-num">03 / 秩序</div>
-          <h3>玫瑰线写诗，曲面作画 —— 这是理性与浪漫的相遇。</h3>
-          <p>规则不是牢笼，是形状的来源。我信的是：先把约束写清楚，再在里面探索。</p>
-          <div class="f-meta"><b>数学范围</b><span>极坐标玫瑰线，r = cos(5θ)，五片花瓣。</span></div>
-          <div class="f-meta"><b>边界</b><span>平面曲线的几何形状，推不出自然界五重对称。</span></div>
-        </div>
-        <div class="f-slot"></div>
-      </div>
+          <article class="scene" data-i="1">
+            <div class="scene-text">
+              <div class="f-num">02 / 连接</div>
+              <div class="scene-formula"><i>e</i><sup><i>i</i>π</sup> + 1 = 0</div>
+              <h3>5 个看似毫无关系的陌生人，最后却在一行公式里相认，他们原来一直都是一家人。</h3>
+              <p>复杂往往不是东西多，是还没找到那个统一的视角。我信的是：先把概念接上，再谈实现。</p>
+              <div class="f-meta"><b>数学范围</b><span>欧拉公式 e<sup>iθ</sup> = cos θ + i sin θ，复平面上的旋转。</span></div>
+              <div class="f-meta"><b>边界</b><span>这是恒等式，不是「万物相连」的证明。</span></div>
+            </div>
+            <div class="scene-art"><svg id="s1" viewBox="0 0 120 120"></svg></div>
+          </article>
 
-      <div class="f-row">
-        <div class="f-text">
-          <div class="f-num">04 / 复杂</div>
-          <h3>极致简单的规则，生长出无穷无尽、独一无二的复杂结构。</h3>
-          <p>我信的是：先写出可以检验的规则，再耐心看它在不同条件下会发生什么。复杂性常藏在边界。</p>
-          <div class="f-meta"><b>数学范围</b><span>z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c，有界 / 逃逸。</span></div>
-          <div class="f-meta"><b>边界</b><span>有限次迭代不等于证明永远有界。</span></div>
+          <article class="scene" data-i="2">
+            <div class="scene-text">
+              <div class="f-num">03 / 秩序</div>
+              <div class="scene-formula"><i>r</i> = cos(5θ)</div>
+              <h3>玫瑰线写诗，曲面作画 —— 这是理性与浪漫的相遇。</h3>
+              <p>规则不是牢笼，是形状的来源。我信的是：先把约束写清楚，再在里面探索。</p>
+              <div class="f-meta"><b>数学范围</b><span>极坐标玫瑰线，r = cos(5θ)，五片花瓣。</span></div>
+              <div class="f-meta"><b>边界</b><span>平面曲线的几何形状，推不出自然界五重对称。</span></div>
+            </div>
+            <div class="scene-art"><svg id="s2" viewBox="0 0 120 120"></svg></div>
+          </article>
+
+          <article class="scene" data-i="3">
+            <div class="scene-text">
+              <div class="f-num">04 / 复杂</div>
+              <div class="scene-formula"><i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub><sup>2</sup> + <i>c</i></div>
+              <h3>极致简单的规则，生长出无穷无尽、独一无二的复杂结构。</h3>
+              <p>我信的是：先写出可以检验的规则，再耐心看它在不同条件下会发生什么。复杂性常藏在边界。</p>
+              <div class="f-meta"><b>数学范围</b><span>z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c，有界 / 逃逸。</span></div>
+              <div class="f-meta"><b>边界</b><span>有限次迭代不等于证明永远有界。</span></div>
+            </div>
+            <div class="scene-art"><img src="assets/mandel-teal.png" alt=""></div>
+          </article>
+
         </div>
-        <div class="f-slot"></div>
       </div>
     </section>
 
@@ -261,56 +295,22 @@
     mk('path',{d,fill:'none',stroke:'currentColor','stroke-width':1.4,'stroke-linejoin':'round'},s);
     mk('circle',{cx,cy,r:2,fill:'currentColor'},s);
   }
-  [['a0',entropy],['a1',euler],['a2',rose]].forEach(([id,fn])=>{const el=document.getElementById(id);if(el)fn(el);});
+  [['s0',entropy],['s1',euler],['s2',rose]].forEach(([id,fn])=>{const el=document.getElementById(id);if(el)fn(el);});
 
-  /* background icons dock to their row while it is on screen */
-  const art=[...document.querySelectorAll('.bg-art .a')];
-  const rows=[...document.querySelectorAll('.f-row')];
-  const cfg=art.map((el,i)=>({el, side:i%2===0?'left':'right', base:null, docked:false, cur:{x:0,y:0,s:1,o:.12}}));
-
-  function measure(){
-    cfg.forEach(c=>{ c.el.style.transform='none'; c.el.style.opacity='.12'; });
-    cfg.forEach(c=>{
-      const r=c.el.getBoundingClientRect();
-      c.base={x:r.left+r.width/2, y:r.top+r.height/2, w:r.width, h:r.height};
-      c.cur={x:0,y:0,s:1,o:.12}; c.docked=false;
-    });
+  const sec=document.getElementById('ideas');
+  const scenes=[...document.querySelectorAll('.scene')];
+  const now=document.getElementById('creed-now');
+  function tick(){
+    if(!sec||!scenes.length) return;
+    const rect=sec.getBoundingClientRect();
+    const total=sec.offsetHeight - innerHeight;
+    const p=total>0 ? Math.min(1, Math.max(0, -rect.top/total)) : 0;
+    const idx=Math.min(scenes.length-1, Math.floor(p*scenes.length));
+    scenes.forEach((sc,i)=>sc.classList.toggle('active', i===idx));
+    if(now) now.textContent=String(idx+1).padStart(2,'0');
+    requestAnimationFrame(tick);
   }
-  measure();
-
-  let lastY=scrollY;
-  function dock(){
-    const vh=innerHeight, y=scrollY;
-    const down = y > lastY + 0.5;
-    const up = y < lastY - 0.5;
-    lastY = y;
-    cfg.forEach((c,i)=>{
-      const row=rows[i];
-      if(!row) return;
-      const rr=row.getBoundingClientRect();
-      const inBand = rr.top < vh*0.72 && rr.bottom > vh*0.26;
-      if(down && inBand) c.docked = true;
-      if(up && rr.top > vh*0.98) c.docked = false;
-      let tx=0,ty=0,s=1,o=.16;
-      if(c.docked){
-        const slot=document.querySelectorAll('.f-slot')[i];
-        const sr=slot.getBoundingClientRect();
-        s=Math.min(sr.width*0.92/c.base.w, sr.height*0.92/c.base.h);
-        tx=(sr.left+sr.width/2)-c.base.x;
-        ty=(sr.top+sr.height/2)-c.base.y;
-        o=.72;
-      }
-      c.cur.x += (tx-c.cur.x)*0.11;
-      c.cur.y += (ty-c.cur.y)*0.11;
-      c.cur.s += (s-c.cur.s)*0.11;
-      c.cur.o += (o-c.cur.o)*0.08;
-      c.el.style.transform='translate('+c.cur.x.toFixed(1)+'px,'+c.cur.y.toFixed(1)+'px) scale('+c.cur.s.toFixed(3)+')';
-      c.el.style.opacity=c.cur.o.toFixed(3);
-    });
-    requestAnimationFrame(dock);
-  }
-  requestAnimationFrame(dock);
-  addEventListener('resize', measure);
+  requestAnimationFrame(tick);
 })();
 </script>
 </body>
