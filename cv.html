@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简历 — 李喜彬</title>
+<style>
+  :root{--paper:#fbfaf7;--ink:#1d1b19;--muted:#6f6c66;--line:#e6e3db;--serif:"Iowan Old Style","Songti SC",Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",sans-serif;--mono:"SF Mono",ui-monospace,Menlo,monospace}
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px;padding:0 32px;border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--serif);font-size:18px}
+  .brand span{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--muted);margin-left:10px;text-transform:uppercase}
+  .actions{display:flex;align-items:center;gap:20px;font-size:12.5px}
+  .actions a{color:var(--muted);text-decoration:none}
+  .actions a:hover{color:var(--ink)}
+  .actions .dl{border-bottom:1px solid var(--line);padding-bottom:1px}
+  .frame{display:block;width:100%;height:calc(100vh - 64px);border:0;background:#fff}
+  .fallback{padding:48px 24px;text-align:center;font-size:14px;color:var(--muted);line-height:1.9}
+  .fallback a{color:var(--ink)}
+  @media (max-width:640px){.bar{padding:0 18px}.brand span{display:none}}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div class="brand">李喜彬<span>Resume</span></div>
+    <div class="actions">
+      <a href="./">← 返回主页</a>
+      <a class="dl" href="assets/lixibin-cv.pdf" download>下载 PDF</a>
+    </div>
+  </div>
+  <object class="frame" data="assets/lixibin-cv.pdf" type="application/pdf" aria-label="李喜彬简历">
+    <div class="fallback">你的浏览器不支持直接显示 PDF。<br><a href="assets/lixibin-cv.pdf">点这里打开或下载简历</a>。</div>
+  </object>
+</body>
+</html>
