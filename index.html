@@ -40,11 +40,16 @@
     .f-slot{width:100%;height:140px}
   }
   @media (max-width:760px){.bg-art{display:none}}
+  @media (max-width:640px){.bio-head{grid-template-columns:1fr;gap:16px}.avatar{width:88px;height:88px}}
 
 
   /* bio */
-  .bio{font-size:15px;line-height:1.95;color:var(--body);margin-top:26px;max-width:700px}
-  .bio + .bio{margin-top:14px}
+.bio-head{display:grid;grid-template-columns:112px 1fr;gap:26px;align-items:start;margin-top:26px;max-width:760px}
+  .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;display:block;border:1px solid var(--line)}
+  .bio-body{min-width:0}
+  .bio-body .bio{margin-top:0}
+  .bio{font-size:15px;line-height:1.95;color:var(--body);max-width:700px}
+  .bio-body .bio + .bio{margin-top:14px}
 
   /* intro */
   .intro{margin-top:24px}
@@ -143,9 +148,12 @@
   </header>
 
   <main>
-    <p class="bio">我是一名拥有 2 年多开发经验的 AI Agent 工程师，专注于 Agent Infra——运行时、上下文与工具接入，对 AI Infra 有整体了解。目前在厦门宇宙极限智能科技负责 Egonex 的 Go 主后端与 Agent 基础设施：约 40 天搭起基于 Gin、PostgreSQL、Redis 的服务主干，覆盖认证、聊天、钱包、KYC 与限流；设计 Agent 上下文、Memory 写入与 MCP 对外接口，并落地 OAuth 2.0 / PKCE、开放接口防刷与 Stripe 支付幂等，支撑面向美国市场的 AI 社交与交易产品。</p>
-    <p class="bio bio-2">在此之前，我在福州美特思基于 Dify、Coze、n8n、LangGraph 搭建业务工作流，封装 ComfyUI 与 MCP 工具服务，也具备 Vue / TypeScript 前端与 Android 交付经验。</p>
-    <p class="bio bio-2">目前关注多 Agent 的分工、交叉审阅、调度与治理，以及怎么把它们做成可复用、可验证的工程能力。</p>
+    <div class="bio-head">
+      <img class="avatar" src="assets/avatar.png" alt="李喜彬">
+      <div class="bio-body">
+        <p class="bio">我是一名拥有 2 年多开发经验的 AI Agent 工程师，专注于 Agent Infra——运行时、上下文与工具接入，对 AI Infra 有整体了解。目前在厦门宇宙极限智能科技负责 Egonex 的 Go 主后端与 Agent 基础设施：约 40 天搭起基于 Gin、PostgreSQL、Redis 的服务主干，覆盖认证、聊天、钱包、KYC 与限流；设计 Agent 上下文、Memory 写入与 MCP 对外接口，并落地 OAuth 2.0 / PKCE、开放接口防刷与 Stripe 支付幂等，支撑面向美国市场的 AI 社交与交易产品。</p>
+        <p class="bio bio-2">在此之前，我在福州美特思基于 Dify、Coze、n8n、LangGraph 搭建业务工作流，封装 ComfyUI 与 MCP 工具服务，也具备 Vue / TypeScript 前端与 Android 交付经验。</p>
+        <p class="bio bio-2">目前关注多 Agent 的分工、交叉审阅、调度与治理，以及怎么把它们做成可复用、可验证的工程能力。</p>
 
 
 
@@ -204,6 +212,8 @@
       <p>如果你也在做类似的事，欢迎发邮件。</p>
       <p><a class="mail" href="mailto:2060154107@qq.com">2060154107@qq.com</a></p>
       <p class="cv-link"><a href="cv.html">简历 PDF ↗</a></p>
+    </div>
+        </div>
     </div>
   </main>
 
