@@ -276,6 +276,11 @@
     .praise-art{height:220px}
   }
 
+
+  .praise-text{--r:0;filter:brightness(calc(.62 + .38*var(--r)))}
+  .praise-text .mask{overflow:hidden;padding-bottom:5px}
+  .praise-text .mask > *{transform:translateY(calc((1 - var(--r)) * 112%));opacity:var(--r);will-change:transform,opacity}
+
 </style>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -315,10 +320,10 @@
     <section class="praise" id="praise">
       <div class="praise-sticky">
         <div class="praise-inner">
-          <div class="praise-text">
-            <div class="sec-label">02 — 数理哲学</div>
-            <h2>赞美数学。</h2>
-            <p>它不解释世界，只把世界压成可以推演的线条。</p>
+          <div class="praise-text" id="praise-text">
+            <div class="mask"><div class="sec-label">02 — 数理哲学</div></div>
+            <div class="mask"><h2>赞美数学。</h2></div>
+            <div class="mask"><p>它不解释世界，只把世界压成可以推演的线条。</p></div>
           </div>
           <div class="praise-art">
             <svg viewBox="0 0 420 260" fill="none" aria-hidden="true">
@@ -448,6 +453,8 @@
     themeBtn.setAttribute('aria-label', dark?'切换浅色模式':'切换深色模式');
   });
 
+
+  const praiseText=document.getElementById('praise-text');
   const praise=document.getElementById('praise');
   const praiseInk=praise?praise.querySelector('.ink'):null;
   const praiseTip=praise?praise.querySelector('.tip'):null;
@@ -459,6 +466,7 @@
       const total=praise.offsetHeight-innerHeight;
       const p=total>0?Math.min(1,Math.max(0,-rect.top/total)):0;
       praiseInk.style.strokeDashoffset=praiseLen*(1-p);
+      if(praiseText) praiseText.style.setProperty('--r', Math.min(1,p/0.08).toFixed(3));
       if(praiseTip){
         const pt=praiseInk.getPointAtLength(Math.max(0.01,praiseLen*p));
         praiseTip.setAttribute('cx',pt.x); praiseTip.setAttribute('cy',pt.y);
