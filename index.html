@@ -183,6 +183,32 @@
 
   .formula-list h3{margin:12px 0 18px;max-width:560px}
   .formula-list span.on{color:#ededed}
+
+  /* interactive fixed formula list */
+  .creeds{height:260vh}
+  .creed-sticky{display:flex;align-items:center;justify-content:center;padding:0}
+  .creed-stage{display:grid;grid-template-columns:1fr minmax(300px,44%);gap:56px;align-items:center;width:min(1160px,calc(100% - 96px))}
+  .formula-panel{display:flex;flex-direction:column;gap:12px;max-width:600px;width:100%}
+  .f-item{font-family:var(--serif);font-size:15px;line-height:1.5;color:#565656;transition:color .45s ease}
+  .f-item.on{color:#f5f5f5}
+  .f-quote h3{font-size:clamp(24px,2.6vw,32px);line-height:1.45;font-weight:500;color:#f5f5f5;margin:6px 0 16px;letter-spacing:-.01em;max-width:560px}
+  .f-quote.switch h3{animation:quoteIn .55s ease}
+  @keyframes quoteIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .art-panel{position:relative;height:min(58vh,540px)}
+  .art{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;display:flex;align-items:center;justify-content:center}
+  .art.on{opacity:1}
+  .art svg,.art img{width:100%;height:100%;object-fit:contain}
+  .art[data-i="0"]{color:#2f6bff;filter:drop-shadow(0 0 12px rgba(47,107,255,.28))}
+  .art[data-i="1"]{color:#7a5af8;filter:drop-shadow(0 0 12px rgba(122,90,248,.28))}
+  .art[data-i="2"]{color:#c04ce0;filter:drop-shadow(0 0 12px rgba(192,76,224,.28))}
+  .art[data-i="3"]{filter:drop-shadow(0 0 12px rgba(14,154,167,.30))}
+  @media (max-width:760px){
+    .creeds{height:auto}
+    .creed-sticky{position:static;height:auto;padding:60px 0}
+    .creed-stage{grid-template-columns:1fr;gap:30px}
+    .art-panel{height:240px}
+  }
+
 </style>
 </head>
 <body>
@@ -215,60 +241,20 @@
 
     <section id="ideas" class="creeds">
       <div class="creed-sticky">
-        <div class="creed-body">
-
-          <article class="scene active" data-i="0">
-            <div class="scene-text">
-              <div class="formula-list">
-                <span class="on"><i>P</i>(<i>x</i>) = −<i>x</i> ln <i>x</i></span>
-                <h3>真正成熟的选择，不是找到理论上最好的那一个，而是在足够了解之后，有能力停止比较，并且愿意为这个选择负责。</h3>
-                <span class=""><i>e</i><sup><i>i</i>π</sup> + 1 = 0</span>
-                <span class=""><i>r</i> = cos(5θ)</span>
-                <span class=""><i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub><sup>2</sup> + <i>c</i></span>
-              </div>
-            </div>
-            <div class="scene-art"><svg id="s0" viewBox="0 0 120 120"></svg></div>
-          </article>
-
-          <article class="scene" data-i="1">
-            <div class="scene-text">
-              <div class="formula-list">
-                <span class="on"><i>e</i><sup><i>i</i>π</sup> + 1 = 0</span>
-                <h3>5 个看似毫无关系的陌生人，最后却在一行公式里相认，他们原来一直都是一家人。</h3>
-                <span class=""><i>P</i>(<i>x</i>) = −<i>x</i> ln <i>x</i></span>
-                <span class=""><i>r</i> = cos(5θ)</span>
-                <span class=""><i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub><sup>2</sup> + <i>c</i></span>
-              </div>
-            </div>
-            <div class="scene-art"><svg id="s1" viewBox="0 0 120 120"></svg></div>
-          </article>
-
-          <article class="scene" data-i="2">
-            <div class="scene-text">
-              <div class="formula-list">
-                <span class="on"><i>r</i> = cos(5θ)</span>
-                <h3>玫瑰线写诗，曲面作画 —— 这是理性与浪漫的相遇。</h3>
-                <span class=""><i>P</i>(<i>x</i>) = −<i>x</i> ln <i>x</i></span>
-                <span class=""><i>e</i><sup><i>i</i>π</sup> + 1 = 0</span>
-                <span class=""><i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub><sup>2</sup> + <i>c</i></span>
-              </div>
-            </div>
-            <div class="scene-art"><svg id="s2" viewBox="0 0 120 120"></svg></div>
-          </article>
-
-          <article class="scene" data-i="3">
-            <div class="scene-text">
-              <div class="formula-list">
-                <span class="on"><i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub><sup>2</sup> + <i>c</i></span>
-                <h3>极致简单的规则，生长出无穷无尽、独一无二的复杂结构。</h3>
-                <span class=""><i>P</i>(<i>x</i>) = −<i>x</i> ln <i>x</i></span>
-                <span class=""><i>e</i><sup><i>i</i>π</sup> + 1 = 0</span>
-                <span class=""><i>r</i> = cos(5θ)</span>
-              </div>
-            </div>
-            <div class="scene-art"><img src="assets/mandel-teal.png" alt=""></div>
-          </article>
-
+        <div class="creed-stage">
+          <div class="formula-panel" id="formula-panel">
+            <div class="f-item on" data-i="0"><span><i>P</i>(<i>x</i>) = −<i>x</i> ln <i>x</i></span></div>
+            <div class="f-item" data-i="1"><span><i>e</i><sup><i>i</i>π</sup> + 1 = 0</span></div>
+            <div class="f-item" data-i="2"><span><i>r</i> = cos(5θ)</span></div>
+            <div class="f-item" data-i="3"><span><i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub><sup>2</sup> + <i>c</i></span></div>
+            <div class="f-quote" id="f-quote"><h3>真正成熟的选择，不是找到理论上最好的那一个，而是在足够了解之后，有能力停止比较，并且愿意为这个选择负责。</h3></div>
+          </div>
+          <div class="art-panel">
+            <div class="art on" data-i="0"><svg id="s0" viewBox="0 0 120 120"></svg></div>
+            <div class="art" data-i="1"><svg id="s1" viewBox="0 0 120 120"></svg></div>
+            <div class="art" data-i="2"><svg id="s2" viewBox="0 0 120 120"></svg></div>
+            <div class="art" data-i="3"><img src="assets/mandel-teal.png" alt=""></div>
+          </div>
         </div>
       </div>
     </section>
@@ -325,18 +311,35 @@
   }
   [['s0',entropy],['s1',euler],['s2',rose]].forEach(([id,fn])=>{const el=document.getElementById(id);if(el)fn(el);});
 
+  const QUOTES=[
+    '真正成熟的选择，不是找到理论上最好的那一个，而是在足够了解之后，有能力停止比较，并且愿意为这个选择负责。',
+    '5 个看似毫无关系的陌生人，最后却在一行公式里相认，他们原来一直都是一家人。',
+    '玫瑰线写诗，曲面作画 —— 这是理性与浪漫的相遇。',
+    '极致简单的规则，生长出无穷无尽、独一无二的复杂结构。'
+  ];
   const sec=document.getElementById('ideas');
-  const scenes=[...document.querySelectorAll('.scene')];
-  const now=document.getElementById('creed-now');
+  const items=[...document.querySelectorAll('.f-item')];
+  const arts=[...document.querySelectorAll('.art')];
+  const quote=document.getElementById('f-quote');
+  const qh=quote?quote.querySelector('h3'):null;
+  let last=-1;
   function tick(){
-    if(!sec||!scenes.length) return;
+    if(!sec) return;
     const rect=sec.getBoundingClientRect();
     const total=sec.offsetHeight - innerHeight;
     const p=total>0 ? Math.min(1, Math.max(0, -rect.top/total)) : 0;
-    const idx=Math.min(scenes.length-1, Math.floor(p*scenes.length));
-    scenes.forEach((sc,i)=>sc.classList.toggle('active', i===idx));
-    if(now) now.textContent=String(idx+1).padStart(2,'0');
+    const idx=Math.min(items.length-1, Math.floor(p*items.length));
+    if(idx!==last){
+      last=idx;
+      items.forEach((it,i)=>it.classList.toggle('on', i===idx));
+      arts.forEach((a,i)=>a.classList.toggle('on', i===idx));
+      if(qh) qh.textContent=QUOTES[idx];
+      items[idx].insertAdjacentElement('afterend', quote);
+      quote.classList.remove('switch'); void quote.offsetWidth; quote.classList.add('switch');
+    }
     requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 })();
