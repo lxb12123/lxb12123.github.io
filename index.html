@@ -225,6 +225,14 @@
   @keyframes artGlow{0%{filter:brightness(1.5)}45%{filter:brightness(1.25)}100%{filter:brightness(1)}}
 
   .creeds{border-top:0}
+
+  /* scale the creed composition down */
+  .creed-stage{grid-template-columns:1fr minmax(280px,40%);gap:48px;width:min(1020px,calc(100% - 112px))}
+  .formula-panel{max-width:520px;gap:10px}
+  .f-item{font-size:13.5px}
+  .f-quote h3{font-size:clamp(21px,2.2vw,27px);line-height:1.5;margin:4px 0 14px;max-width:520px}
+  .art-panel{height:min(48vh,450px)}
+
 </style>
 </head>
 <body>
