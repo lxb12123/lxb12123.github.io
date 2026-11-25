@@ -282,6 +282,12 @@
   .praise-text .mask > *{transform:translateY(calc((1 - var(--r)) * 112%));opacity:var(--r);will-change:transform,opacity}
 
   .foot{border-top:0}
+
+  .praise{height:auto;margin:44px 0 0;padding:0}
+  .praise-sticky{position:static;height:auto;display:block}
+  .praise-inner{width:100%;grid-template-columns:1fr minmax(240px,42%);gap:48px}
+  .praise-art{height:min(32vh,250px)}
+
 </style>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -319,7 +325,6 @@
 
 
     <section class="praise" id="praise">
-      <div class="praise-sticky">
         <div class="praise-inner">
           <div class="praise-text" id="praise-text">
             <div class="mask"><div class="sec-label">02 — 数理哲学</div></div>
@@ -334,7 +339,6 @@
             </svg>
           </div>
         </div>
-      </div>
     </section>
 
     <section id="ideas" class="creeds">
@@ -463,11 +467,10 @@
   if(praiseInk){ praiseLen=praiseInk.getTotalLength(); praiseInk.style.strokeDasharray=praiseLen; praiseInk.style.strokeDashoffset=praiseLen; }
   function praiseTick(){
     if(praise&&praiseInk){
-      const rect=praise.getBoundingClientRect();
-      const total=praise.offsetHeight-innerHeight;
-      const p=total>0?Math.min(1,Math.max(0,-rect.top/total)):0;
+      const p=Math.min(1,Math.max(0,scrollY/(innerHeight*0.55)));
+      const rt=Math.min(1,Math.max(0,scrollY/(innerHeight*0.18)));
       praiseInk.style.strokeDashoffset=praiseLen*(1-p);
-      if(praiseText) praiseText.style.setProperty('--r', Math.min(1,scrollY/(innerHeight*0.45)).toFixed(3));
+      if(praiseText) praiseText.style.setProperty('--r', rt.toFixed(3));
       if(praiseTip){
         const pt=praiseInk.getPointAtLength(Math.max(0.01,praiseLen*p));
         praiseTip.setAttribute('cx',pt.x); praiseTip.setAttribute('cy',pt.y);
