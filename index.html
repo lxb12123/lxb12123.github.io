@@ -466,7 +466,7 @@
       const total=praise.offsetHeight-innerHeight;
       const p=total>0?Math.min(1,Math.max(0,-rect.top/total)):0;
       praiseInk.style.strokeDashoffset=praiseLen*(1-p);
-      if(praiseText) praiseText.style.setProperty('--r', Math.min(1,p/0.08).toFixed(3));
+      if(praiseText) praiseText.style.setProperty('--r', Math.min(1,scrollY/(innerHeight*0.45)).toFixed(3));
       if(praiseTip){
         const pt=praiseInk.getPointAtLength(Math.max(0.01,praiseLen*p));
         praiseTip.setAttribute('cx',pt.x); praiseTip.setAttribute('cy',pt.y);
