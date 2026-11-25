@@ -209,6 +209,21 @@
     .art-panel{height:240px}
   }
 
+
+  /* light section + cinematic art swap */
+  .creeds{background:var(--paper);color:var(--ink);border-top:1px solid var(--line)}
+  .f-item{color:#bdb8ae}
+  .f-item.on{color:var(--ink)}
+  .f-quote h3{color:var(--ink)}
+  .art{will-change:transform,opacity}
+  .art.out{z-index:1;animation:artOut .6s cubic-bezier(.4,0,.2,1) forwards}
+  .art.on{z-index:2}
+  .art.in{animation:artIn .85s cubic-bezier(.2,.7,.2,1)}
+  @keyframes artOut{0%{opacity:1;transform:none}100%{opacity:0;transform:translateX(90px) scale(.78)}}
+  @keyframes artIn{0%{opacity:0;transform:translateX(-70px) scale(.78)}55%{opacity:1}100%{opacity:1;transform:none}}
+  .art.in svg,.art.in img{animation:artGlow 1s ease}
+  @keyframes artGlow{0%{filter:brightness(1.5)}45%{filter:brightness(1.25)}100%{filter:brightness(1)}}
+
 </style>
 </head>
 <body>
@@ -332,7 +347,17 @@
     if(idx!==last){
       last=idx;
       items.forEach((it,i)=>it.classList.toggle('on', i===idx));
-      arts.forEach((a,i)=>a.classList.toggle('on', i===idx));
+      const prev=last>=0?arts[last]:null;
+      if(prev&&prev!==arts[idx]){
+        prev.classList.remove('on');
+        prev.classList.add('out');
+        setTimeout(()=>prev.classList.remove('out'),650);
+      }
+      arts[idx].classList.add('on');
+      arts[idx].classList.remove('in');
+      void arts[idx].offsetWidth;
+      arts[idx].classList.add('in');
+      setTimeout(()=>arts[idx].classList.remove('in'),950);
       if(qh) qh.textContent=QUOTES[idx];
       items[idx].insertAdjacentElement('afterend', quote);
       quote.classList.remove('switch'); void quote.offsetWidth; quote.classList.add('switch');
