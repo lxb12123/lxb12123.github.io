@@ -444,9 +444,9 @@
   let last=-1;
   function tick(){
     if(praise&&praiseBox){
-      const r=praise.getBoundingClientRect();
-      praiseBox.classList.toggle('in', r.top<innerHeight*0.8);
-      const a=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight*0.9)));
+      const br=praiseBox.getBoundingClientRect();
+      praiseBox.classList.toggle('in', br.top<innerHeight*0.92);
+      const a=Math.min(1,Math.max(0,(innerHeight-br.top)/(innerHeight*0.7)));
       praiseBox.style.setProperty('--a',(0.25+0.75*a).toFixed(3));
       const b=Math.min(1,Math.max(0,(a-0.25)/0.75));
       praiseBox.style.setProperty('--b',(0.18+0.82*b).toFixed(3));
