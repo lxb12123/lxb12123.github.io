@@ -300,6 +300,11 @@
   .praise-mask{overflow:hidden;padding-bottom:6px}
   .praise-mask h2{transform:translateY(calc((1 - var(--r,0)) * 112%));opacity:var(--r,0);will-change:transform,opacity}
 
+
+  .praise-line{margin:0}
+  .praise-sub{font-size:14px;color:var(--ink);margin:12px 0 0;letter-spacing:.04em}
+  .praise-box .ch{opacity:.18;transition:opacity .18s linear}
+
 </style>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -339,7 +344,8 @@
     <section class="praise" id="praise">
       <div class="praise-inner">
         <div class="praise-box">
-          <div class="praise-mask"><h2>赞美数学。</h2></div>
+          <h2 class="praise-line" id="praise-line">赞美数学</h2>
+          <p class="praise-sub" id="praise-sub">无所不为其概之</p>
         </div>
       </div>
     </section>
@@ -419,6 +425,18 @@
   ];
 
   const praiseBox=document.querySelector('.praise-box');
+  const praiseLine=document.getElementById('praise-line');
+  const praiseSub=document.getElementById('praise-sub');
+  function splitChars(el){
+    if(!el) return [];
+    const txt=el.textContent.trim();
+    el.textContent='';
+    return [...txt].map(c=>{
+      const sp=document.createElement('span');
+      sp.className='ch'; sp.textContent=c; el.appendChild(sp); return sp;
+    });
+  }
+  const praiseChars=[...splitChars(praiseLine),...splitChars(praiseSub)];
   const sec=document.getElementById('ideas');
   const items=[...document.querySelectorAll('.f-item')];
   const arts=[...document.querySelectorAll('.art')];
@@ -426,7 +444,13 @@
   const qh=quote?quote.querySelector('h3'):null;
   let last=-1;
   function tick(){
-    if(praiseBox) praiseBox.style.setProperty('--r', Math.min(1,Math.max(0,scrollY/(innerHeight*0.18))).toFixed(3));
+    if(praiseChars.length){
+      const pp=Math.min(1,Math.max(0,scrollY/(innerHeight*0.55)));
+      praiseChars.forEach((ch,i)=>{
+        const t=Math.min(1,Math.max(0,pp*praiseChars.length-i));
+        ch.style.opacity=(0.18+0.82*t).toFixed(3);
+      });
+    }
     if(!sec) return;
     const rect=sec.getBoundingClientRect();
     const total=sec.offsetHeight - innerHeight;
