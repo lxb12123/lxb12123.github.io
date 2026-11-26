@@ -314,6 +314,10 @@
   .praise-line{font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.01em;margin:0;color:rgba(var(--ink-rgb),var(--a,.25))}
   .praise-sub{font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.01em;margin:8px 0 0;color:rgba(var(--ink-rgb),var(--b,.18))}
 
+
+  .praise{height:150vh;padding:0;display:block}
+  .praise-sticky{position:sticky;top:0;height:100vh;display:flex;align-items:flex-end;padding:0 0 12vh}
+
 </style>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -351,11 +355,13 @@
 
 
     <section class="praise" id="praise">
+      <div class="praise-sticky">
       <div class="praise-inner">
         <div class="praise-box" id="praise-box">
           <h2 class="praise-line">赞美数学</h2>
           <p class="praise-sub">无所不为其概之</p>
         </div>
+      </div>
       </div>
     </section>
 
@@ -444,9 +450,11 @@
   let last=-1;
   function tick(){
     if(praise&&praiseBox){
-      const br=praiseBox.getBoundingClientRect();
-      praiseBox.classList.toggle('in', br.top<innerHeight*0.92);
-      const a=Math.min(1,Math.max(0,(innerHeight-br.top)/(innerHeight*0.7)));
+      const pr=praise.getBoundingClientRect();
+      const total=praise.offsetHeight-innerHeight;
+      const pp=total>0?Math.min(1,Math.max(0,-pr.top/total)):0;
+      praiseBox.classList.toggle('in', pp>0.02);
+      const a=Math.min(1,Math.max(0,pp*1.6));
       praiseBox.style.setProperty('--a',(0.25+0.75*a).toFixed(3));
       const b=Math.min(1,Math.max(0,(a-0.25)/0.75));
       praiseBox.style.setProperty('--b',(0.18+0.82*b).toFixed(3));
