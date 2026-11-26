@@ -288,6 +288,11 @@
   .praise-art{height:min(32vh,250px)}
 
   .praise{border-top:0}
+
+  .praise{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);margin-top:56px;border-top:0;padding:0;height:auto}
+  .praise-inner{display:block;width:min(1160px,calc(100% - 96px));margin:0 auto}
+  .praise h2{font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:0}
+
 </style>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -325,20 +330,9 @@
 
 
     <section class="praise" id="praise">
-        <div class="praise-inner">
-          <div class="praise-text" id="praise-text">
-            <div class="mask"><div class="sec-label">02 — 数理哲学</div></div>
-            <div class="mask"><h2>赞美数学。</h2></div>
-            <div class="mask"><p>它不解释世界，只把世界压成可以推演的线条。</p></div>
-          </div>
-          <div class="praise-art">
-            <svg viewBox="0 0 420 260" fill="none" aria-hidden="true">
-              <path class="track" d="M18 226 C 90 224, 140 210, 185 182 C 235 150, 258 120, 292 88 C 326 56, 356 38, 402 30"/>
-              <path class="ink" d="M18 226 C 90 224, 140 210, 185 182 C 235 150, 258 120, 292 88 C 326 56, 356 38, 402 30"/>
-              <circle class="tip" r="3.2"/>
-            </svg>
-          </div>
-        </div>
+      <div class="praise-inner">
+        <h2>赞美数学。</h2>
+      </div>
     </section>
 
     <section id="ideas" class="creeds">
@@ -459,25 +453,7 @@
   });
 
 
-  const praiseText=document.getElementById('praise-text');
-  const praise=document.getElementById('praise');
-  const praiseInk=praise?praise.querySelector('.ink'):null;
-  const praiseTip=praise?praise.querySelector('.tip'):null;
-  let praiseLen=0;
-  if(praiseInk){ praiseLen=praiseInk.getTotalLength(); praiseInk.style.strokeDasharray=praiseLen; praiseInk.style.strokeDashoffset=praiseLen; }
-  function praiseTick(){
-    if(praise&&praiseInk){
-      const p=Math.min(1,Math.max(0,scrollY/(innerHeight*0.55)));
-      const rt=Math.min(1,Math.max(0,scrollY/(innerHeight*0.18)));
-      praiseInk.style.strokeDashoffset=praiseLen*(1-p);
-      if(praiseText) praiseText.style.setProperty('--r', rt.toFixed(3));
-      if(praiseTip){
-        const pt=praiseInk.getPointAtLength(Math.max(0.01,praiseLen*p));
-        praiseTip.setAttribute('cx',pt.x); praiseTip.setAttribute('cy',pt.y);
-        praiseTip.style.opacity=p>0.005?1:0;
-      }
-    }
-    requestAnimationFrame(praiseTick);
+
   }
   requestAnimationFrame(praiseTick);
 })();
