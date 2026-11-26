@@ -291,6 +291,8 @@
 
   .praise{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);margin-top:56px;border-top:0;padding:0;height:auto}
   .praise-inner{display:block;width:min(1160px,calc(100% - 96px));margin:0 auto}
+  .praise-box{width:min(1020px,calc(100% - 112px));margin:0 auto}
+  @media (max-width:1100px){.praise-inner{width:calc(100% - 64px)}}
   .praise h2{font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:0}
 
 </style>
@@ -331,7 +333,9 @@
 
     <section class="praise" id="praise">
       <div class="praise-inner">
-        <h2>赞美数学。</h2>
+        <div class="praise-box">
+          <h2>赞美数学。</h2>
+        </div>
       </div>
     </section>
 
